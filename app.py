@@ -8,18 +8,8 @@ from datetime import datetime
 from starlette.status import HTTP_200_OK
 from starlette.responses import Response
 
-class Data(BaseModel):
-    image_path: str
+from src.model.inference import Data, Inference
 
-
-class Inference(BaseModel):
-    node_ip: str
-    service_id: str
-    model_id: str
-    data: Optional[List[Data]] = None
-
-# d = Data(image_path = "/lala")
-# print(d.schema())
 
 app = FastAPI()
 
@@ -36,7 +26,7 @@ async def inference(inference: Inference, status_code=HTTP_200_OK):
 
     test_data = inference.data[0]
     print(test_data.image_path)
-    return "Hello world"
+    return "Inference works!"
 
 @app.post("/file")
 async def test_file(response: Response, file: bytes = File(...)):

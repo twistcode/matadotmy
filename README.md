@@ -6,10 +6,13 @@ mata.my
 pip3 install -r requirements.txt
 ```
 
-## Launch API
+## How to get started
+1. Start the webapp
 ```
 uvicorn app:app --reload
 ```
+
+2. Open **http://127.0.0.1:8000/docs** to look at the schema for every endpoints
 
 ## Things to do
 ```

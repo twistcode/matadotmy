@@ -1,0 +1,4 @@
+
+
+class Database(Document):
+    pass

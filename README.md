@@ -17,3 +17,9 @@ uvicorn app:app --reload
 - [ ] Test for basic inference using fastai image classification task
 - [ ] Fix the database schema and models
 ```
+
+## Extra things if get bored
+```
+- [ ] Wrap the code into docker (API and db)
+- [ ] Get nginx done to expose the API
+```

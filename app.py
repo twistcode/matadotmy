@@ -10,6 +10,11 @@ from starlette.responses import Response
 
 from src.model.inference import Data, Inference
 
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.lulu
+
 
 app = FastAPI()
 
@@ -25,8 +30,10 @@ async def ping():
 async def inference(inference: Inference, status_code=HTTP_200_OK):
 
     test_data = inference.data[0]
-    print(test_data.image_path)
-    return "Inference works!"
+    print(inference.dict(by_alias=True))
+    ret = db.inference.insert_one(inference.dict(by_alias=True))
+
+    return "Inference works"
 
 @app.post("/file")
 async def test_file(response: Response, file: bytes = File(...)):

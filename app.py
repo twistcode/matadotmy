@@ -15,8 +15,8 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.lulu
 
-
 app = FastAPI()
+
 
 @app.get("/")
 async def hello_world():
@@ -28,10 +28,29 @@ async def ping():
 
 @app.post("/inference")
 async def inference(inference: Inference, status_code=HTTP_200_OK):
+    
+    #####################################################################
+    ############## Get data #############################################
+    #####################################################################
+    
+    # Check inference services from db
+    # Image classification / object detection / image segmentation
 
-    test_data = inference.data[0]
-    print(inference.dict(by_alias=True))
-    ret = db.inference.insert_one(inference.dict(by_alias=True))
+    #####################################################################
+    
+    service = db.services.find_one({ "service_id": f"{inference.service_id}" })
+    service_type = service["service_type"]
+    print(service_type)
+    
+    model = db.models.find_one({ "model_id": f"{inference.model_id}" })
+    model_path = model["model_path"]
+    print(model_path)
+
+    #####################################################################
+    ############## Inference ############################################
+    #####################################################################
+    
+    
 
     return "Inference works"
 

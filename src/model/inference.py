@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List
 from pydantic import BaseModel, Field
 # from src.db.database import PyObjectId
 # from bson import ObjectId
@@ -20,8 +20,9 @@ class Data(BaseModel):
 
 class Inference(BaseModel):
     node_ip: List[str]
-    service: str
-    model: str
+    service_id: str
+    model_id: str
+    description: str
     data: List[str] = None
     
     

@@ -2,6 +2,5 @@ fastapi
 uvicorn
 python-multipart
 pymongo
-bson
 fastai
 opencv-python

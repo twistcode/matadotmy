@@ -11,7 +11,7 @@ from datetime import datetime
 from starlette.status import HTTP_200_OK
 from starlette.responses import Response
 
-from src.model.inference import Data, Inference
+from model.inference import Data, Inference
 
 from pymongo import MongoClient
 

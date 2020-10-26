@@ -8,3 +8,4 @@ pydantic
 Pillow
 typing
 torch
+python-multipart

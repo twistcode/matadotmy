@@ -116,12 +116,12 @@ async def inference(inference: Inference, status_code=HTTP_200_OK):
         # print("JSON TEST : ", json_test)
     return JSONResponse(content=json_test)
 
-# @app.post("/file")
-# async def test_file(response: Response, file: bytes = File(...)):
-#     response.headers["x-file-size"] = str(len(file))
-#     response.set_cookie(key="cookie-api", value="test")
-#     return {"file_size": len(file)}
+@app.post("/file")
+async def test_file(response: Response, file: bytes = File(...)):
+    response.headers["x-file-size"] = str(len(file))
+    response.set_cookie(key="cookie-api", value="test")
+    return {"file_size": len(file)}
 
-# @app.post("/upload/file")
-# async def upload_file(file: UploadFile = File(...)):
-#     return {"file_size": file.filename}
+@app.post("/upload/file")
+async def upload_file(file: UploadFile = File(...)):
+    return {"file_size": file.filename}
